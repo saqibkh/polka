@@ -185,6 +185,8 @@ if(BUILD_TESTING)
     target_link_libraries(test_cuda_range_filter polka_core)
     ament_add_gtest(test_cuda_pack test/test_cuda_pack.cpp)
     target_link_libraries(test_cuda_pack polka_core)
+    # Lets ctest -L cuda select the CUDA tests.
+    set_property(TEST test_cuda_range_filter test_cuda_pack APPEND PROPERTY LABELS cuda)
   endif()
 
   # test_deskew replays a real bag fragment (test/data/airy_turn.mcap).
